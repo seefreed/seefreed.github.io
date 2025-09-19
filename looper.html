@@ -184,7 +184,7 @@
             errorMessage.textContent = '';
             if (!videoId) { errorMessage.textContent = '无效的 YouTube 链接，请检查后重试。'; return; }
             if (player) { player.destroy(); player = null; }
-            resetControls();
+            //resetControls();
             playerPlaceholder.classList.add('hidden');
             playerDiv.classList.remove('hidden');
             player = new YT.Player('player', {
