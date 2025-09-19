@@ -173,6 +173,7 @@
         // 6. 核心功能函数
         function loadVideoFromUrl() {
             const url = urlInput.value.trim();
+            if(!url) return;
             const videoId = extractVideoId(url);
             errorMessage.textContent = '';
             if (!videoId) { errorMessage.textContent = '无效的 YouTube 链接，请检查后重试。'; return; }
@@ -186,7 +187,9 @@
                 events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
             });
         }
-
+        // auto troggle one time whne there is a default value from input
+        loadVideoFromUrl();
+        
         function extractVideoId(url) {
             const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/;
             return url.match(regex)?.[1] || null;
