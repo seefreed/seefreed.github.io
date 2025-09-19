@@ -147,7 +147,7 @@
         // 2. 全局变量
         let player, progressInterval;
         let isLooping = false;
-        let startTimeA = +(localStorage.getItem('startTimeA') || 0), endTimeB = +(localStorage.getItem('endTimeB') || 0);
+        let startTimeA = 0, endTimeB = 0;
 
         // 3. DOM 元素获取
         const urlInput = document.getElementById('youtube-url'), loadButton = document.getElementById('load-video');
@@ -160,7 +160,7 @@
         
         const setAButton = document.getElementById('set-a'), setBButton = document.getElementById('set-b');
         const timeADisplay = document.getElementById('time-a'), timeBDisplay = document.getElementById('time-b');
-
+        
         const toggleLoopButton = document.getElementById('toggle-loop'), loopStatusDisplay = document.getElementById('loop-status');
         const speedControl = document.getElementById('speed-control'), speedLabel = document.getElementById('speed-label');
 
@@ -184,7 +184,7 @@
             errorMessage.textContent = '';
             if (!videoId) { errorMessage.textContent = '无效的 YouTube 链接，请检查后重试。'; return; }
             if (player) { player.destroy(); player = null; }
-            //resetControls();
+            resetControls();
             playerPlaceholder.classList.add('hidden');
             playerDiv.classList.remove('hidden');
             player = new YT.Player('player', {
@@ -315,10 +315,10 @@
 
         function resetControls() {
             isLooping = false;
-            startTimeA = 0;
-            endTimeB = 0;
-            timeADisplay.textContent = '00:00.0';
-            timeBDisplay.textContent = '00:00.0';
+            startTimeA = +(localStorage.getItem('startTimeA') || 0);
+            endTimeB = +(localStorage.getItem('endTimeB') || 0);
+            timeADisplay.textContent = formatTime(startTimeA);
+            timeBDisplay.textContent = formatTime(endTimeB);
             updateLoopButtonUI();
             loopRangeBar.style.left = '0%';
             loopRangeBar.style.width = '0%';
