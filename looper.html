@@ -135,9 +135,15 @@
         // 1. YouTube IFrame API 设置
         const tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
+        tag.onload = function () {
+            setTimeout(function() {
+                // auto troggle one time whne there is a default value from input
+                loadVideoFromUrl();
+            }, 500)
+        }
         const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+        
         // 2. 全局变量
         let player, progressInterval;
         let isLooping = false;
@@ -187,8 +193,7 @@
                 events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
             });
         }
-        // auto troggle one time whne there is a default value from input
-        loadVideoFromUrl();
+        
         
         function extractVideoId(url) {
             const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/;
