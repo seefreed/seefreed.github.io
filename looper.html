@@ -204,7 +204,7 @@
             controlsDiv.classList.remove('opacity-50', 'pointer-events-none');
             timelineControls.classList.remove('opacity-50', 'pointer-events-none');
             const duration = player.getDuration();
-            endTimeB = duration; // Default B to end
+            if(endTimeB <= 0) endTimeB = duration; // Default B to end
             totalDurationDisplay.textContent = formatTime(duration, false);
             updateThumbPositions();
             updateLoopRangeBar();
