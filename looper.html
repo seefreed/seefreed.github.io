@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 循环播放器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+        }
+        /* 自定义输入框数字按钮样式 */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        /* 自定义滑块样式 */
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            cursor: pointer;
+            border-radius: 50%;
+            margin-top: -6px; /* 垂直居中 thumb */
+        }
+        .range-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        /* 抓取手势 */
+        .cursor-grab { cursor: grab; }
+        .cursor-grabbing { cursor: grabbing; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl mx-auto">
+        <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
+            
+            <header class="p-4 sm:p-6 border-b border-gray-700">
+                <h1 class="text-xl sm:text-2xl font-bold text-center text-blue-400">YouTube 视频 A-B 循环</h1>
+                <p class="text-center text-gray-400 mt-1 text-sm">输入 YouTube 链接，即可开始学习或欣赏精彩片段。</p>
+                <!-- URL 输入区域 -->
+                <div class="flex flex-col sm:flex-row gap-2 mt-4">
+                    <input type="text" id="youtube-url" placeholder="粘贴 YouTube 视频链接..." class="flex-grow bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                    <button id="load-video" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 w-full sm:w-auto flex-shrink-0">加载视频</button>
+                </div>
+                 <div id="error-message" class="text-red-400 text-center mt-2 text-sm"></div>
+            </header>
+
+            <main class="p-4 sm:p-6">
+                <!-- 视频播放器容器 -->
+                <div id="player-container" class="w-full aspect-video bg-black rounded-lg mb-4 flex items-center justify-center">
+                    <div id="player-placeholder" class="text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="mt-2">视频加载后将在此处显示</p>
+                    </div>
+                    <div id="player" class="hidden"></div>
+                </div>
+
+                <!-- Timeline/Slider Control -->
+                <div id="timeline-controls" class="space-y-2 opacity-50 pointer-events-none mb-4">
+                    <div id="slider-container" class="relative w-full h-5 flex items-center">
+                        <!-- Background Track -->
+                        <div class="w-full h-1.5 bg-gray-600 rounded-full absolute"></div>
+                        <!-- Loop Range Highlight -->
+                        <div id="loop-range-bar" class="absolute h-1.5 bg-blue-500/40 rounded-full pointer-events-none z-10" style="left: 0%; width: 0%;"></div>
+                         <!-- Progress Bar -->
+                        <div id="progress-bar" class="absolute h-1.5 bg-white/50 rounded-full pointer-events-none z-20" style="width: 0%;"></div>
+                        <!-- Draggable Thumbs -->
+                        <div id="thumb-a" class="absolute w-4 h-4 bg-blue-500 border-2 border-gray-800 rounded-full cursor-grab z-30 transform -translate-x-1/2" style="left: 0%;"></div>
+                        <div id="thumb-b" class="absolute w-4 h-4 bg-green-500 border-2 border-gray-800 rounded-full cursor-grab z-30 transform -translate-x-1/2" style="left: 100%;"></div>
+                    </div>
+                    <div class="flex justify-between text-xs font-mono text-gray-400">
+                        <span id="current-time">00:00</span>
+                        <span id="total-duration">00:00</span>
+                    </div>
+                </div>
+
+                <!-- A-B 循环控制 -->
+                <div id="controls" class="space-y-4 opacity-50 pointer-events-none">
+                    <div class="bg-gray-700/50 p-4 rounded-xl">
+                        <h3 class="font-semibold mb-3 text-lg">循环设置</h3>
+                        <div class="flex items-center gap-2 sm:gap-4">
+                             <!-- 切换循环按钮 -->
+                            <button id="toggle-loop" class="w-16 h-16 sm:w-20 sm:h-20 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded-full flex flex-col items-center justify-center transition-all duration-300 flex-shrink-0">
+                                <span class="text-lg">循环</span>
+                                <span id="loop-status" class="text-xs font-normal">关闭</span>
+                            </button>
+                            <div class="flex-grow grid grid-cols-2 gap-2">
+                                <button id="set-a" class="bg-blue-600/80 hover:bg-blue-600 text-white py-2 rounded-lg transition-colors">
+                                    <span class="font-bold">设置 A 点</span>
+                                    <div id="time-a" class="text-xs">00:00.0</div>
+                                </button>
+                                <button id="set-b" class="bg-green-600/80 hover:bg-green-600 text-white py-2 rounded-lg transition-colors">
+                                    <span class="font-bold">设置 B 点</span>
+                                    <div id="time-b" class="text-xs">00:00.0</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-center text-gray-400 text-xs mt-3">拖动上方滑块或点击按钮设置循环点。</div>
+                    </div>
+                    
+                    <!-- 播放速度控制 -->
+                    <div class="bg-gray-700/50 p-4 rounded-xl">
+                        <h3 class="font-semibold mb-2 text-lg">播放速度</h3>
+                        <div class="flex items-center gap-3">
+                            <span id="speed-label" class="text-sm font-mono w-12 text-center">1.0x</span>
+                            <input type="range" id="speed-control" min="0.25" max="2" step="0.25" value="1" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer range-slider">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer class="text-center mt-4">
+            <p class="text-xs text-gray-500">由 Gemini 精心构建</p>
+        </footer>
+    </div>
+
+    <script>
+        // 1. YouTube IFrame API 设置
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 2. 全局变量
+        let player, progressInterval;
+        let isLooping = false;
+        let startTimeA = 0, endTimeB = 0;
+
+        // 3. DOM 元素获取
+        const urlInput = document.getElementById('youtube-url'), loadButton = document.getElementById('load-video');
+        const errorMessage = document.getElementById('error-message'), playerPlaceholder = document.getElementById('player-placeholder'), playerDiv = document.getElementById('player');
+        
+        const controlsDiv = document.getElementById('controls'), timelineControls = document.getElementById('timeline-controls');
+        const sliderContainer = document.getElementById('slider-container'), loopRangeBar = document.getElementById('loop-range-bar'), progressBar = document.getElementById('progress-bar');
+        const thumbA = document.getElementById('thumb-a'), thumbB = document.getElementById('thumb-b');
+        const currentTimeDisplay = document.getElementById('current-time'), totalDurationDisplay = document.getElementById('total-duration');
+        
+        const setAButton = document.getElementById('set-a'), setBButton = document.getElementById('set-b');
+        const timeADisplay = document.getElementById('time-a'), timeBDisplay = document.getElementById('time-b');
+
+        const toggleLoopButton = document.getElementById('toggle-loop'), loopStatusDisplay = document.getElementById('loop-status');
+        const speedControl = document.getElementById('speed-control'), speedLabel = document.getElementById('speed-label');
+
+        // 4. API 回调函数
+        function onYouTubeIframeAPIReady() {}
+
+        // 5. 事件监听器
+        loadButton.addEventListener('click', loadVideoFromUrl);
+        urlInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') loadVideoFromUrl(); });
+        
+        setAButton.addEventListener('click', () => setTime('A'));
+        setBButton.addEventListener('click', () => setTime('B'));
+        toggleLoopButton.addEventListener('click', toggleLoop);
+        speedControl.addEventListener('input', changePlaybackSpeed);
+        
+        // 6. 核心功能函数
+        function loadVideoFromUrl() {
+            const url = urlInput.value.trim();
+            const videoId = extractVideoId(url);
+            errorMessage.textContent = '';
+            if (!videoId) { errorMessage.textContent = '无效的 YouTube 链接，请检查后重试。'; return; }
+            if (player) { player.destroy(); player = null; }
+            resetControls();
+            playerPlaceholder.classList.add('hidden');
+            playerDiv.classList.remove('hidden');
+            player = new YT.Player('player', {
+                height: '100%', width: '100%', videoId: videoId,
+                playerVars: { 'playsinline': 1, 'rel': 0, 'modestbranding': 1 },
+                events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
+            });
+        }
+
+        function extractVideoId(url) {
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/;
+            return url.match(regex)?.[1] || null;
+        }
+
+        function onPlayerReady(event) {
+            controlsDiv.classList.remove('opacity-50', 'pointer-events-none');
+            timelineControls.classList.remove('opacity-50', 'pointer-events-none');
+            const duration = player.getDuration();
+            endTimeB = duration; // Default B to end
+            totalDurationDisplay.textContent = formatTime(duration, false);
+            updateThumbPositions();
+            updateLoopRangeBar();
+            initDraggableSlider();
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING) startProgressUpdate();
+            else stopProgressUpdate();
+        }
+
+        function formatTime(time, showMs = true) {
+            if (isNaN(time) || time < 0) return showMs ? "00:00.0" : "00:00";
+            const date = new Date(null);
+            date.setSeconds(time);
+            const timeStr = date.toISOString().substr(14, 5);
+            return showMs ? `${timeStr}.${Math.floor((time * 10) % 10)}` : timeStr;
+        }
+
+        function setTime(point) {
+            if (!player) return;
+            const currentTime = player.getCurrentTime();
+            if (point === 'A') {
+                if (endTimeB > 0 && currentTime >= endTimeB) return;
+                startTimeA = currentTime;
+                timeADisplay.textContent = formatTime(startTimeA);
+            } else if (point === 'B') {
+                if (currentTime <= startTimeA) return;
+                endTimeB = currentTime;
+                timeBDisplay.textContent = formatTime(endTimeB);
+            }
+            updateThumbPositions();
+            updateLoopRangeBar();
+        }
+
+        function toggleLoop() {
+            isLooping = !isLooping;
+            updateLoopButtonUI();
+            if (isLooping && player?.getPlayerState() === YT.PlayerState.PLAYING) startProgressUpdate();
+        }
+        
+        function updateLoopButtonUI() {
+            const isToggled = isLooping;
+            loopStatusDisplay.textContent = isToggled ? '开启' : '关闭';
+            toggleLoopButton.classList.toggle('bg-indigo-600', isToggled);
+            toggleLoopButton.classList.toggle('hover:bg-indigo-500', isToggled);
+            toggleLoopButton.classList.toggle('scale-110', isToggled);
+            toggleLoopButton.classList.toggle('bg-gray-600', !isToggled);
+            toggleLoopButton.classList.toggle('hover:bg-gray-500', !isToggled);
+        }
+
+        function startProgressUpdate() {
+            stopProgressUpdate();
+            progressInterval = setInterval(updateProgress, 100);
+        }
+        
+        function stopProgressUpdate() {
+            clearInterval(progressInterval);
+        }
+
+        function updateProgress() {
+            if (!player) return;
+            const currentTime = player.getCurrentTime();
+            const duration = player.getDuration();
+            if (duration > 0) {
+                progressBar.style.width = `${(currentTime / duration) * 100}%`;
+                currentTimeDisplay.textContent = formatTime(currentTime, false);
+            }
+            if (isLooping && endTimeB > startTimeA && currentTime >= endTimeB) {
+                player.seekTo(startTimeA, true);
+            }
+        }
+        
+        function updateLoopRangeBar() {
+            if (!player) { loopRangeBar.style.width = '0%'; return; }
+            const duration = player.getDuration();
+            if (duration > 0 && endTimeB > startTimeA) {
+                const left = (startTimeA / duration) * 100;
+                const width = ((endTimeB - startTimeA) / duration) * 100;
+                loopRangeBar.style.left = `${left}%`;
+                loopRangeBar.style.width = `${width}%`;
+            } else {
+                loopRangeBar.style.width = '0%';
+            }
+        }
+
+        function updateThumbPositions() {
+            if (!player) return;
+            const duration = player.getDuration();
+            if (duration > 0) {
+                thumbA.style.left = `${(startTimeA / duration) * 100}%`;
+                thumbB.style.left = `${(endTimeB / duration) * 100}%`;
+            }
+        }
+
+        function changePlaybackSpeed() {
+            if (player) player.setPlaybackRate(parseFloat(speedControl.value));
+            speedLabel.textContent = `${parseFloat(speedControl.value).toFixed(2)}x`;
+        }
+
+        function resetControls() {
+            isLooping = false;
+            startTimeA = 0;
+            endTimeB = 0;
+            timeADisplay.textContent = '00:00.0';
+            timeBDisplay.textContent = '00:00.0';
+            updateLoopButtonUI();
+            loopRangeBar.style.left = '0%';
+            loopRangeBar.style.width = '0%';
+            progressBar.style.width = '0%';
+            thumbA.style.left = '0%';
+            thumbB.style.left = '100%';
+            speedControl.value = 1;
+            speedLabel.textContent = '1.00x';
+            controlsDiv.classList.add('opacity-50', 'pointer-events-none');
+            timelineControls.classList.add('opacity-50', 'pointer-events-none');
+            currentTimeDisplay.textContent = '00:00';
+            totalDurationDisplay.textContent = '00:00';
+            playerPlaceholder.classList.remove('hidden');
+            playerDiv.classList.add('hidden');
+        }
+        
+        function initDraggableSlider() {
+            let activeThumb = null;
+
+            function handleDragStart(e) {
+                if (!player) return;
+                const target = e.target;
+                if (target === thumbA || target === thumbB) {
+                    activeThumb = target;
+                    activeThumb.classList.remove('cursor-grab');
+                    activeThumb.classList.add('cursor-grabbing');
+                } else if (target === sliderContainer || sliderContainer.contains(target)) {
+                    // Click on track to seek
+                    const rect = sliderContainer.getBoundingClientRect();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const percent = (clientX - rect.left) / rect.width;
+                    const time = player.getDuration() * percent;
+                    player.seekTo(time, true);
+                    return;
+                } else return;
+                
+                e.preventDefault();
+                document.addEventListener('mousemove', handleDragMove);
+                document.addEventListener('mouseup', handleDragEnd);
+                document.addEventListener('touchmove', handleDragMove, { passive: false });
+                document.addEventListener('touchend', handleDragEnd);
+            }
+
+            function handleDragMove(e) {
+                if (!activeThumb || !player) return;
+                e.preventDefault();
+                const rect = sliderContainer.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                let percent = (clientX - rect.left) / rect.width;
+                percent = Math.max(0, Math.min(1, percent));
+                
+                let newTime = player.getDuration() * percent;
+                
+                if (activeThumb === thumbA) {
+                    newTime = Math.min(newTime, endTimeB - 0.1); // Prevent crossing
+                    startTimeA = newTime;
+                    timeADisplay.textContent = formatTime(startTimeA);
+                } else {
+                    newTime = Math.max(newTime, startTimeA + 0.1); // Prevent crossing
+                    endTimeB = newTime;
+                    timeBDisplay.textContent = formatTime(endTimeB);
+                }
+                updateThumbPositions();
+                updateLoopRangeBar();
+            }
+
+            function handleDragEnd() {
+                if (activeThumb) {
+                    activeThumb.classList.add('cursor-grab');
+                    activeThumb.classList.remove('cursor-grabbing');
+                    activeThumb = null;
+                }
+                document.removeEventListener('mousemove', handleDragMove);
+                document.removeEventListener('mouseup', handleDragEnd);
+                document.removeEventListener('touchmove', handleDragMove);
+                document.removeEventListener('touchend', handleDragEnd);
+            }
+
+            sliderContainer.addEventListener('mousedown', handleDragStart);
+            sliderContainer.addEventListener('touchstart', handleDragStart, { passive: false });
+        }
+    </script>
+</body>
+</html>
+
