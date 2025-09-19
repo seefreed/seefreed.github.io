@@ -147,7 +147,7 @@
         // 2. 全局变量
         let player, progressInterval;
         let isLooping = false;
-        let startTimeA = +(localStorage.get('startTimeA') || 0), endTimeB = +(localStorage.get('endTimeB') || 0);
+        let startTimeA = +(localStorage.getItem('startTimeA') || 0), endTimeB = +(localStorage.getItem('endTimeB') || 0);
 
         // 3. DOM 元素获取
         const urlInput = document.getElementById('youtube-url'), loadButton = document.getElementById('load-video');
@@ -231,12 +231,12 @@
             if (point === 'A') {
                 if (endTimeB > 0 && currentTime >= endTimeB) return;
                 startTimeA = currentTime;
-                localStorage.set('startTimeA', startTimeA);
+                localStorage.setItem('startTimeA', startTimeA);
                 timeADisplay.textContent = formatTime(startTimeA);
             } else if (point === 'B') {
                 if (currentTime <= startTimeA) return;
                 endTimeB = currentTime;
-                localStorage.set('endTimeB', endTimeB);
+                localStorage.setItem('endTimeB', endTimeB);
                 timeBDisplay.textContent = formatTime(endTimeB);
             }
             updateThumbPositions();
