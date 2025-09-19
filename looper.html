@@ -53,7 +53,7 @@
                 <p class="text-center text-gray-400 mt-1 text-sm">输入 YouTube 链接，即可开始学习或欣赏精彩片段。</p>
                 <!-- URL 输入区域 -->
                 <div class="flex flex-col sm:flex-row gap-2 mt-4">
-                    <input type="text" id="youtube-url" placeholder="粘贴 YouTube 视频链接..." class="flex-grow bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                    <input type="text" id="youtube-url" value="https://youtu.be/idEAABFzpfg?si=WCik7PXVqlHjXMS6" placeholder="粘贴 YouTube 视频链接..." class="flex-grow bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
                     <button id="load-video" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 w-full sm:w-auto flex-shrink-0">加载视频</button>
                 </div>
                  <div id="error-message" class="text-red-400 text-center mt-2 text-sm"></div>
@@ -120,7 +120,7 @@
                         <h3 class="font-semibold mb-2 text-lg">播放速度</h3>
                         <div class="flex items-center gap-3">
                             <span id="speed-label" class="text-sm font-mono w-12 text-center">1.0x</span>
-                            <input type="range" id="speed-control" min="0.25" max="2" step="0.25" value="1" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer range-slider">
+                            <input type="range" id="speed-control" min="0.25" max="2" step="0.05" value="1" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer range-slider">
                         </div>
                     </div>
                 </div>
