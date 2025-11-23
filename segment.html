@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 尝试优化 Referrer 策略以改善嵌入兼容性 -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>YouTube 25秒分段循环器</title>
+    <style>
+        /* CSS Reset & 基础样式 */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        
+        body {
+            background-color: #0f172a; /* 深蓝黑色背景 */
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 布局容器 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 15px;
+        }
+        
+        h1 { font-size: 1.5rem; color: #fff; }
+        .badge { background: #dc2626; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 10px; }
+
+        /* 输入框区域 */
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus { border-color: #3b82f6; }
+
+        button.load-btn {
+            padding: 0 24px;
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        button.load-btn:hover { background-color: #b91c1c; }
+
+        /* 主内容区布局 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .main-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* 视频播放器区域 */
+        .player-wrapper {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .video-container iframe, .video-container div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 控制面板 */
+        .controls {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #334155;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        .time-display { font-family: monospace; font-size: 1.1rem; }
+
+        .loop-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: #64748b;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .loop-active .toggle-switch { background: #22c55e; }
+        .loop-active .toggle-switch::after { transform: translateX(20px); }
+
+        /* 侧边栏分段列表 */
+        .segments-panel {
+            background: #1e293b;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 15px;
+            background: #334155;
+            font-weight: bold;
+            border-bottom: 1px solid #475569;
+        }
+
+        .segments-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .segments-list::-webkit-scrollbar { width: 8px; }
+        .segments-list::-webkit-scrollbar-track { background: #1e293b; }
+        .segments-list::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+
+        .segment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .segment-item:hover {
+            background: #334155;
+            color: #fff;
+        }
+
+        .segment-item.active {
+            background: #4f46e5;
+            border-color: #6366f1;
+            color: white;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .segment-time { font-family: monospace; font-size: 0.85rem; opacity: 0.8; }
+        .segment-label { font-weight: 600; }
+
+        #status-msg { color: #f87171; margin-top: 8px; font-size: 0.95rem; font-weight: bold; min-height: 24px; padding: 5px; border-radius: 4px;}
+        .status-error { background-color: rgba(220, 38, 38, 0.2); border: 1px solid rgba(220, 38, 38, 0.5); }
+        .tip { font-size: 0.8rem; color: #94a3b8; margin-top: 5px; line-height: 1.4; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <h1>Youtube Looper <span class="badge">25s</span></h1>
+        </header>
+
+        <!-- 输入区 -->
+        <div>
+            <div class="input-group">
+                <!-- 更改默认视频为 Big Buck Bunny (开源电影，无版权封锁风险) -->
+                <input type="text" id="video-url" placeholder="在此粘贴 YouTube 视频链接..." value="https://www.youtube.com/watch?v=aqz-KE-bpKQ">
+                <button class="load-btn" onclick="loadVideoFromInput()">加载视频</button>
+            </div>
+            <div id="status-msg"></div>
+            <div class="tip">
+                <strong>注意：</strong> 如果遇到 "Error 150/153"，说明该视频（通常是音乐MV）被发布者设置为<strong>禁止在第三方网站播放</strong>。<br>
+                请尝试更换其他普通视频（如教程、Vlog、开源电影等）进行测试。
+            </div>
+        </div>
+
+        <!-- 主内容 -->
+        <div class="main-content">
+            
+            <!-- 左侧：播放器 -->
+            <div class="player-wrapper">
+                <div class="video-container">
+                    <div id="player"></div>
+                </div>
+                
+                <div class="controls">
+                    <div class="time-display">
+                        <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+
+                    <div class="loop-toggle loop-active" id="loop-btn" onclick="toggleLoop()">
+                        <span>循环播放</span>
+                        <div class="toggle-switch"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：分段列表 -->
+            <div class="segments-panel">
+                <div class="panel-header">分段列表 (每段 25秒)</div>
+                <div class="segments-list" id="segments-list">
+                    <div style="padding: 20px; text-align: center; color: #64748b;">
+                        请加载视频以生成分段
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 常量
+        const SEGMENT_DURATION = 25; // 秒
+        
+        // 状态变量
+        let player;
+        let videoDuration = 0;
+        let checkInterval;
+        let currentSegmentIndex = null;
+        let isLooping = true;
+        let isPlayerReady = false;
+
+        // 1. 加载 YouTube IFrame API
+        if (!window.YT) {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+
+        // 2. API 准备就绪回调
+        function onYouTubeIframeAPIReady() {
+            console.log("YouTube API Ready");
+        }
+
+        // 3. 从输入框加载视频
+        function loadVideoFromInput() {
+            const url = document.getElementById('video-url').value;
+            const videoId = extractVideoID(url);
+            const statusEl = document.getElementById('status-msg');
+            statusEl.className = '';
+
+            if (!videoId) {
+                statusEl.innerText = "无效的 YouTube 链接。";
+                statusEl.className = 'status-error';
+                return;
+            }
+            statusEl.innerText = "";
+            document.getElementById('segments-list').innerHTML = '<div style="padding:20px;text-align:center;color:#64748b;">加载中...</div>';
+
+            if (player && typeof player.loadVideoById === 'function') {
+                // 如果已经有实例，尝试直接加载
+                try {
+                    player.loadVideoById(videoId);
+                } catch(e) {
+                    console.error("Player reload error", e);
+                    createPlayer(videoId);
+                }
+            } else {
+                createPlayer(videoId);
+            }
+        }
+
+        function createPlayer(videoId) {
+            // 安全销毁旧播放器
+            if (player && typeof player.destroy === 'function') {
+                try {
+                    player.destroy();
+                } catch(e) { console.warn("Destroy error", e); }
+            }
+
+            // 获取当前域名，用于 origin 参数，处理 null 的情况
+            let currentOrigin = window.location.origin;
+            if (currentOrigin === 'null' || !currentOrigin) {
+                // 如果在某些严格沙盒中 origin 是 null，尝试不传 origin，或者传一个通用值
+                // 注意：本地文件系统也是 null
+                currentOrigin = undefined; 
+            }
+
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: videoId,
+                host: 'https://www.youtube.com', // 强制 HTTPS host
+                playerVars: {
+                    'playsinline': 1,
+                    'modestbranding': 1,
+                    'rel': 0,
+                    'origin': currentOrigin // 动态设置 origin
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            isPlayerReady = true;
+            document.getElementById('status-msg').innerText = "";
+            document.getElementById('status-msg').className = "";
+            setupVideoData();
+            startLoopChecker();
+            event.target.playVideo();
+        }
+
+        function onPlayerError(event) {
+            const statusEl = document.getElementById('status-msg');
+            let errorMsg = `视频加载错误 (代码: ${event.data})`;
+            let isFatal = false;
+            
+            // 错误代码参考: https://developers.google.com/youtube/iframe_api_reference#Events
+            if (event.data === 150 || event.data === 101 || event.data === 153) {
+                errorMsg = `🚫 无法播放 (错误 ${event.data}): 视频所有者禁止在外部嵌入。请换一个视频测试。`;
+                isFatal = true;
+            } else if (event.data === 2) {
+                errorMsg = "❌ 无效的视频 ID，请检查链接。";
+                isFatal = true;
+            } else if (event.data === 5) {
+                errorMsg = "⚠️ HTML5 播放器错误，请刷新页面重试。";
+            }
+            
+            statusEl.innerText = errorMsg;
+            statusEl.className = 'status-error';
+            console.error("YouTube Player Error:", event.data);
+
+            if(isFatal) {
+                document.getElementById('segments-list').innerHTML = '<div style="padding:20px;text-align:center;color:#ef4444;">加载失败</div>';
+            }
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.CUED) {
+                setupVideoData();
+                // 播放成功，清除之前的错误信息
+                const statusEl = document.getElementById('status-msg');
+                if(statusEl.className.includes('status-error')) {
+                    statusEl.innerText = "";
+                    statusEl.className = "";
+                }
+            }
+        }
+
+        function setupVideoData() {
+            if(!player || !player.getDuration) return;
+
+            const duration = player.getDuration();
+            if(duration === 0) {
+                setTimeout(setupVideoData, 500);
+                return;
+            }
+
+            if (duration !== videoDuration) {
+                videoDuration = duration;
+                document.getElementById('duration').innerText = formatTime(videoDuration);
+                generateSegments(duration);
+            }
+        }
+
+        function generateSegments(duration) {
+            const listContainer = document.getElementById('segments-list');
+            listContainer.innerHTML = '';
+            
+            const totalSegments = Math.ceil(duration / SEGMENT_DURATION);
+
+            for (let i = 0; i < totalSegments; i++) {
+                const startTime = i * SEGMENT_DURATION;
+                const endTime = Math.min((i + 1) * SEGMENT_DURATION, duration);
+
+                const div = document.createElement('div');
+                div.className = 'segment-item';
+                div.id = `segment-${i}`;
+                div.innerHTML = `
+                    <span class="segment-label">第 ${i + 1} 段</span>
+                    <span class="segment-time">${formatTime(startTime)} - ${formatTime(endTime)}</span>
+                `;
+                
+                div.onclick = () => playSegment(i);
+                listContainer.appendChild(div);
+            }
+        }
+
+        function playSegment(index) {
+            if (!isPlayerReady) return;
+            currentSegmentIndex = index;
+            updateActiveSegmentUI();
+            const startTime = index * SEGMENT_DURATION;
+            player.seekTo(startTime, true);
+            player.playVideo();
+        }
+
+        function updateActiveSegmentUI() {
+            document.querySelectorAll('.segment-item').forEach(el => el.classList.remove('active'));
+            if (currentSegmentIndex !== null) {
+                const el = document.getElementById(`segment-${currentSegmentIndex}`);
+                if (el) {
+                    el.classList.add('active');
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+
+        function startLoopChecker() {
+            if (checkInterval) clearInterval(checkInterval);
+
+            checkInterval = setInterval(() => {
+                if (!player || !player.getCurrentTime || typeof player.getPlayerState !== 'function') return;
+                
+                // 只有正在播放时才检查
+                if (player.getPlayerState() !== YT.PlayerState.PLAYING) return;
+
+                const currentTime = player.getCurrentTime();
+                document.getElementById('current-time').innerText = formatTime(currentTime);
+
+                // 如果未开启强制循环，则根据时间自动高亮当前分段
+                if (!isLooping) {
+                     const calculatedIndex = Math.floor(currentTime / SEGMENT_DURATION);
+                     if (calculatedIndex !== currentSegmentIndex) {
+                         currentSegmentIndex = calculatedIndex;
+                         updateActiveSegmentUI();
+                     }
+                }
+
+                // 强制循环逻辑
+                if (isLooping && currentSegmentIndex !== null) {
+                    const segmentEnd = (currentSegmentIndex + 1) * SEGMENT_DURATION;
+                    const segmentStart = currentSegmentIndex * SEGMENT_DURATION;
+
+                    // 当超过分段结束时间时，跳回开始
+                    if (currentTime >= segmentEnd) {
+                        player.seekTo(segmentStart, true);
+                    }
+                }
+            }, 100); 
+        }
+
+        function toggleLoop() {
+            isLooping = !isLooping;
+            const btn = document.getElementById('loop-btn');
+            if (isLooping) {
+                btn.classList.add('loop-active');
+            } else {
+                btn.classList.remove('loop-active');
+            }
+        }
+
+        function extractVideoID(url) {
+            const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[7].length == 11) ? match[7] : false;
+        }
+
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+        }
+    </script>
+</body>
+</html>
