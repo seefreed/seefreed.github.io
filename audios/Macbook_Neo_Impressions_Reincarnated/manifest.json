@@ -1,0 +1,1347 @@
+[
+  {
+    "index": 1,
+    "filename": "chunk_001.mp4",
+    "start": 1.9,
+    "end": 12.58,
+    "duration": 10.68,
+    "text": "All right, so Apple is doing a week of new release stuff, and it's all headlined by what I saw today, which is the newest, cheapest entry to the MacBook lineup, the MacBook Neo.",
+    "sentences": [
+      {
+        "text": "All right, so Apple is doing a week of new release stuff, and it's all headlined by what I saw today, which is the newest, cheapest entry to the MacBook lineup, the MacBook Neo.",
+        "start": 2.2,
+        "end": 12.58
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "filename": "chunk_002.mp4",
+    "start": 12.56,
+    "end": 18,
+    "duration": 5.44,
+    "text": "First of all, interesting name. We've never heard that word from Apple before. I thought when it was leaked, it was maybe just a code name.",
+    "sentences": [
+      {
+        "text": "First of all, interesting name.",
+        "start": 12.86,
+        "end": 13.86
+      },
+      {
+        "text": "We've never heard that word from Apple before.",
+        "start": 14.06,
+        "end": 15.66
+      },
+      {
+        "text": "I thought when it was leaked, it was maybe just a code name.",
+        "start": 15.76,
+        "end": 18
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "filename": "chunk_003.mp4",
+    "start": 17.74,
+    "end": 22.6,
+    "duration": 4.86,
+    "text": "I would have bet it's just called the MacBook, but no, it's actually MacBook Neo.",
+    "sentences": [
+      {
+        "text": "I would have bet it's just called the MacBook, but no, it's actually MacBook Neo.",
+        "start": 18.04,
+        "end": 22.6
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "filename": "chunk_004.mp4",
+    "start": 22.38,
+    "end": 34.56,
+    "duration": 12.18,
+    "text": "And the basics are this. It is a 13-inch laptop powered by the A18 Pro chip, eight gigs of RAM, 256 gigs of starting storage, and it is a super thin and decently light all-aluminum laptop.",
+    "sentences": [
+      {
+        "text": "And the basics are this.",
+        "start": 22.68,
+        "end": 24.2
+      },
+      {
+        "text": "It is a 13-inch laptop powered by the A18 Pro chip, eight gigs of RAM, 256 gigs of starting storage, and it is a super thin and decently light all-aluminum laptop.",
+        "start": 24.3,
+        "end": 34.56
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "filename": "chunk_005.mp4",
+    "start": 34.66,
+    "end": 38.26,
+    "duration": 3.6,
+    "text": "Two USB Type-C ports on the left-hand side, not Thunderbolt.",
+    "sentences": [
+      {
+        "text": "Two USB Type-C ports on the left-hand side, not Thunderbolt.",
+        "start": 34.96,
+        "end": 38.26
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "filename": "chunk_006.mp4",
+    "start": 38.44,
+    "end": 47.64,
+    "duration": 9.2,
+    "text": "There's a headphone jack on the left as well, and then there's some side-firing stereo speakers, and it comes in four colors, indigo, blush, citrus, and silver.",
+    "sentences": [
+      {
+        "text": "There's a headphone jack on the left as well, and then there's some side-firing stereo speakers, and it comes in four colors, indigo, blush, citrus, and silver.",
+        "start": 38.74,
+        "end": 47.64
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "filename": "chunk_007.mp4",
+    "start": 47.42,
+    "end": 53.14,
+    "duration": 5.72,
+    "text": "They all have this sort of a whitish keyboard that is kind of tinted to match the color of the laptop.",
+    "sentences": [
+      {
+        "text": "They all have this sort of a whitish keyboard that is kind of tinted to match the color of the laptop.",
+        "start": 47.72,
+        "end": 53.14
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "filename": "chunk_008.mp4",
+    "start": 53.04,
+    "end": 60.76,
+    "duration": 7.72,
+    "text": "In person, maybe the lighting is terrible in here, but it was kind of hard to tell when looking at a single laptop, but you can, when there's some next to each other, see that the keyboards are tinted.",
+    "sentences": [
+      {
+        "text": "In person, maybe the lighting is terrible in here, but it was kind of hard to tell when looking at a single laptop, but you can, when there's some next to each other, see that the keyboards are tinted.",
+        "start": 53.34,
+        "end": 60.76
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "filename": "chunk_009.mp4",
+    "start": 60.78,
+    "end": 65.72,
+    "duration": 4.94,
+    "text": "And there's a 1080p webcam up at the top hidden in that bezel, no notch.",
+    "sentences": [
+      {
+        "text": "And there's a 1080p webcam up at the top hidden in that bezel, no notch.",
+        "start": 61.08,
+        "end": 65.72
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "filename": "chunk_010.mp4",
+    "start": 65.86,
+    "end": 69.94,
+    "duration": 4.08,
+    "text": "And most importantly, the starting price, $599.",
+    "sentences": [
+      {
+        "text": "And most importantly, the starting price, $599.",
+        "start": 66.16,
+        "end": 69.94
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "filename": "chunk_011.mp4",
+    "start": 70.1,
+    "end": 74.72,
+    "duration": 4.62,
+    "text": "And this is really interesting. They actually hit the price.",
+    "sentences": [
+      {
+        "text": "And this is really interesting.",
+        "start": 70.4,
+        "end": 72.58
+      },
+      {
+        "text": "They actually hit the price.",
+        "start": 72.74,
+        "end": 74.72
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "filename": "chunk_012.mp4",
+    "start": 74.5,
+    "end": 78.16,
+    "duration": 3.66,
+    "text": "This is now the cheapest entry-level Mac laptop.",
+    "sentences": [
+      {
+        "text": "This is now the cheapest entry-level Mac laptop.",
+        "start": 74.8,
+        "end": 78.16
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "filename": "chunk_013.mp4",
+    "start": 77.92,
+    "end": 86.3,
+    "duration": 8.38,
+    "text": "It's the same price as a Mac mini, which has actually been one of the best deals in tech for a little bit now, and I think this one's also shaping up to be pretty good value.",
+    "sentences": [
+      {
+        "text": "It's the same price as a Mac mini, which has actually been one of the best deals in tech for a little bit now, and I think this one's also shaping up to be pretty good value.",
+        "start": 78.22,
+        "end": 86.3
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "filename": "chunk_014.mp4",
+    "start": 86.0,
+    "end": 92.34,
+    "duration": 6.34,
+    "text": "Now, the X factor is how will the A18 Pro chip perform inside a computer?",
+    "sentences": [
+      {
+        "text": "Now, the X factor is how will the A18 Pro chip perform inside a computer?",
+        "start": 86.3,
+        "end": 92.34
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "filename": "chunk_015.mp4",
+    "start": 92.5,
+    "end": 100.1,
+    "duration": 7.6,
+    "text": "Now, in case you don't remember, the A18 Pro is the same chip that was in the iPhone 16 Pros last year, but actually this is a binned version.",
+    "sentences": [
+      {
+        "text": "Now, in case you don't remember, the A18 Pro is the same chip that was in the iPhone 16 Pros last year, but actually this is a binned version.",
+        "start": 92.8,
+        "end": 100.1
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "filename": "chunk_016.mp4",
+    "start": 100.06,
+    "end": 112.12,
+    "duration": 12.06,
+    "text": "This is a five-core GPU version instead of six-core. But I think in general, there's a lot of tasks that regular people do on regular computers that clearly don't require a ton of power.",
+    "sentences": [
+      {
+        "text": "This is a five-core GPU version instead of six-core.",
+        "start": 100.36,
+        "end": 102.48
+      },
+      {
+        "text": "But I think in general, there's a lot of tasks that regular people do on regular computers that clearly don't require a ton of power.",
+        "start": 103.38,
+        "end": 112.12
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "filename": "chunk_017.mp4",
+    "start": 111.82,
+    "end": 117.1,
+    "duration": 5.28,
+    "text": "Web browsing, emailing, shopping, spreadsheet type of stuff, right?",
+    "sentences": [
+      {
+        "text": "Web browsing, emailing, shopping, spreadsheet type of stuff, right?",
+        "start": 112.12,
+        "end": 117.1
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "filename": "chunk_018.mp4",
+    "start": 117.12,
+    "end": 122.86,
+    "duration": 5.74,
+    "text": "And before I've done any testing, just messing around on this thing for a few minutes, it seems like it would be totally fine for that.",
+    "sentences": [
+      {
+        "text": "And before I've done any testing, just messing around on this thing for a few minutes, it seems like it would be totally fine for that.",
+        "start": 117.42,
+        "end": 122.86
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "filename": "chunk_019.mp4",
+    "start": 122.68,
+    "end": 128.36,
+    "duration": 5.68,
+    "text": "I would not expect to edit videos or do anything really intensive on this thing. That'd be kind of crazy.",
+    "sentences": [
+      {
+        "text": "I would not expect to edit videos or do anything really intensive on this thing.",
+        "start": 122.98,
+        "end": 127.52
+      },
+      {
+        "text": "That'd be kind of crazy.",
+        "start": 127.58,
+        "end": 128.36
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "filename": "chunk_020.mp4",
+    "start": 128.14,
+    "end": 135.56,
+    "duration": 7.42,
+    "text": "But I also wouldn't be surprised if it could handle some light photo editing, some multitasking, and just generally be a solid computer.",
+    "sentences": [
+      {
+        "text": "But I also wouldn't be surprised if it could handle some light photo editing, some multitasking, and just generally be a solid computer.",
+        "start": 128.44,
+        "end": 135.56
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "filename": "chunk_021.mp4",
+    "start": 135.46,
+    "end": 141.32,
+    "duration": 5.86,
+    "text": "Think of it like a Chromebook, but the Apple one. It's like the Safari book, basically.",
+    "sentences": [
+      {
+        "text": "Think of it like a Chromebook, but the Apple one.",
+        "start": 135.76,
+        "end": 138.9
+      },
+      {
+        "text": "It's like the Safari book, basically.",
+        "start": 138.96,
+        "end": 141.32
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "filename": "chunk_022.mp4",
+    "start": 141.02,
+    "end": 147.62,
+    "duration": 6.6,
+    "text": "This is like, it's a super basic computer. If you're looking at this and thinking, I wonder if this has enough RAM for what I'm trying to do.",
+    "sentences": [
+      {
+        "text": "This is like, it's a super basic computer.",
+        "start": 141.32,
+        "end": 143.42
+      },
+      {
+        "text": "If you're looking at this and thinking, I wonder if this has enough RAM for what I'm trying to do.",
+        "start": 143.5,
+        "end": 147.62
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "filename": "chunk_023.mp4",
+    "start": 147.64,
+    "end": 152.14,
+    "duration": 4.5,
+    "text": "This probably already isn't for you. This isn't the computer you should be looking at.",
+    "sentences": [
+      {
+        "text": "This probably already isn't for you.",
+        "start": 147.94,
+        "end": 150.02
+      },
+      {
+        "text": "This isn't the computer you should be looking at.",
+        "start": 150.14,
+        "end": 152.14
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "filename": "chunk_024.mp4",
+    "start": 151.9,
+    "end": 157.4,
+    "duration": 5.5,
+    "text": "If you're thinking, I wonder why they're USB type C ports and not Thunderbolt.",
+    "sentences": [
+      {
+        "text": "If you're thinking, I wonder why they're USB type C ports and not Thunderbolt.",
+        "start": 152.2,
+        "end": 157.4
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "filename": "chunk_025.mp4",
+    "start": 157.8,
+    "end": 165.58,
+    "duration": 7.78,
+    "text": "It's probably not for you. You're watching an MKBHD video on the day that it was uploaded because you're subscribed to a tech channel on YouTube.",
+    "sentences": [
+      {
+        "text": "It's probably not for you.",
+        "start": 158.1,
+        "end": 159.28
+      },
+      {
+        "text": "You're watching an MKBHD video on the day that it was uploaded because you're subscribed to a tech channel on YouTube.",
+        "start": 159.52,
+        "end": 165.58
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "filename": "chunk_026.mp4",
+    "start": 166.02,
+    "end": 169.84,
+    "duration": 3.82,
+    "text": "This probably isn't the computer for you. Now, I'm thinking the battery life could be interesting.",
+    "sentences": [
+      {
+        "text": "This probably isn't the computer for you.",
+        "start": 166.32,
+        "end": 167.9
+      },
+      {
+        "text": "Now, I'm thinking the battery life could be interesting.",
+        "start": 167.94,
+        "end": 169.84
+      }
+    ]
+  },
+  {
+    "index": 27,
+    "filename": "chunk_027.mp4",
+    "start": 169.54,
+    "end": 175.56,
+    "duration": 6.02,
+    "text": "Obviously, it's the same chip as an iPhone, but with a chassis and the battery size of a laptop.",
+    "sentences": [
+      {
+        "text": "Obviously, it's the same chip as an iPhone, but with a chassis and the battery size of a laptop.",
+        "start": 169.84,
+        "end": 175.56
+      }
+    ]
+  },
+  {
+    "index": 28,
+    "filename": "chunk_028.mp4",
+    "start": 175.4,
+    "end": 184.36,
+    "duration": 8.96,
+    "text": "So it seems like a good combo. And I think they're quoting 16 hours right now, which doesn't mean much to me, except that they also quote MacBook Air at 18 hours.",
+    "sentences": [
+      {
+        "text": "So it seems like a good combo.",
+        "start": 175.7,
+        "end": 176.88
+      },
+      {
+        "text": "And I think they're quoting 16 hours right now, which doesn't mean much to me, except that they also quote MacBook Air at 18 hours.",
+        "start": 176.96,
+        "end": 184.36
+      }
+    ]
+  },
+  {
+    "index": 29,
+    "filename": "chunk_029.mp4",
+    "start": 184.14,
+    "end": 187.98,
+    "duration": 3.84,
+    "text": "So it should be in the same ballpark. So why do they do this? Why do they make this thing?",
+    "sentences": [
+      {
+        "text": "So it should be in the same ballpark.",
+        "start": 184.44,
+        "end": 186.06
+      },
+      {
+        "text": "So why do they do this?",
+        "start": 186.1,
+        "end": 186.86
+      },
+      {
+        "text": "Why do they make this thing?",
+        "start": 187.28,
+        "end": 187.98
+      }
+    ]
+  },
+  {
+    "index": 30,
+    "filename": "chunk_030.mp4",
+    "start": 188.34,
+    "end": 193.38,
+    "duration": 5.04,
+    "text": "Well, I think the obvious answer is just to have something much more attainable available.",
+    "sentences": [
+      {
+        "text": "Well, I think the obvious answer is just to have something much more attainable available.",
+        "start": 188.64,
+        "end": 193.38
+      }
+    ]
+  },
+  {
+    "index": 31,
+    "filename": "chunk_031.mp4",
+    "start": 193.16,
+    "end": 198.22,
+    "duration": 5.06,
+    "text": "Up until now, the cheapest laptop available was the MacBook Air, and that just got a price bump up with the M5.",
+    "sentences": [
+      {
+        "text": "Up until now, the cheapest laptop available was the MacBook Air, and that just got a price bump up with the M5.",
+        "start": 193.46,
+        "end": 198.22
+      }
+    ]
+  },
+  {
+    "index": 32,
+    "filename": "chunk_032.mp4",
+    "start": 197.92,
+    "end": 205.66,
+    "duration": 7.74,
+    "text": "That's an $1,100 laptop. So this is the cheaper one, but in my limited hands-on time, it doesn't feel cheap, right?",
+    "sentences": [
+      {
+        "text": "That's an $1,100 laptop.",
+        "start": 198.22,
+        "end": 199.94
+      },
+      {
+        "text": "So this is the cheaper one, but in my limited hands-on time, it doesn't feel cheap, right?",
+        "start": 199.98,
+        "end": 205.66
+      }
+    ]
+  },
+  {
+    "index": 33,
+    "filename": "chunk_033.mp4",
+    "start": 205.72,
+    "end": 213.54,
+    "duration": 7.82,
+    "text": "Matter of fact, one of the advantages here is it's going to probably be the best built laptop at this price with this all metal body, this nice hinge weight.",
+    "sentences": [
+      {
+        "text": "Matter of fact, one of the advantages here is it's going to probably be the best built laptop at this price with this all metal body, this nice hinge weight.",
+        "start": 206.02,
+        "end": 213.54
+      }
+    ]
+  },
+  {
+    "index": 34,
+    "filename": "chunk_034.mp4",
+    "start": 213.48,
+    "end": 219.6,
+    "duration": 6.12,
+    "text": "Everything still feels very much like the other more premium MacBooks. There's also a couple of smaller things I noticed too.",
+    "sentences": [
+      {
+        "text": "Everything still feels very much like the other more premium MacBooks.",
+        "start": 213.78,
+        "end": 217.38
+      },
+      {
+        "text": "There's also a couple of smaller things I noticed too.",
+        "start": 217.52,
+        "end": 219.6
+      }
+    ]
+  },
+  {
+    "index": 35,
+    "filename": "chunk_035.mp4",
+    "start": 219.3,
+    "end": 224.86,
+    "duration": 5.56,
+    "text": "Like the base version with 256 gigs doesn't have Touch ID. It's just a lock button on the keyboard.",
+    "sentences": [
+      {
+        "text": "Like the base version with 256 gigs doesn't have Touch ID.",
+        "start": 219.6,
+        "end": 222.86
+      },
+      {
+        "text": "It's just a lock button on the keyboard.",
+        "start": 223,
+        "end": 224.86
+      }
+    ]
+  },
+  {
+    "index": 36,
+    "filename": "chunk_036.mp4",
+    "start": 224.66,
+    "end": 230,
+    "duration": 5.34,
+    "text": "So you spend another 100 bucks and you get the 512 gigs of storage and Touch ID.",
+    "sentences": [
+      {
+        "text": "So you spend another 100 bucks and you get the 512 gigs of storage and Touch ID.",
+        "start": 224.96,
+        "end": 230
+      }
+    ]
+  },
+  {
+    "index": 37,
+    "filename": "chunk_037.mp4",
+    "start": 230.14,
+    "end": 235.06,
+    "duration": 4.92,
+    "text": "The trackpad also is actually not a haptic trackpad like the rest of the MacBooks.",
+    "sentences": [
+      {
+        "text": "The trackpad also is actually not a haptic trackpad like the rest of the MacBooks.",
+        "start": 230.44,
+        "end": 235.06
+      }
+    ]
+  },
+  {
+    "index": 38,
+    "filename": "chunk_038.mp4",
+    "start": 234.76,
+    "end": 241.62,
+    "duration": 6.86,
+    "text": "It's a real moving, clicking, old school trackpad, I guess, but it also feels totally fine.",
+    "sentences": [
+      {
+        "text": "It's a real moving, clicking, old school trackpad, I guess, but it also feels totally fine.",
+        "start": 235.06,
+        "end": 241.62
+      }
+    ]
+  },
+  {
+    "index": 39,
+    "filename": "chunk_039.mp4",
+    "start": 241.56,
+    "end": 247.64,
+    "duration": 6.08,
+    "text": "And then the display, it's okay. It's not amazing. It's 13 inches corner to corner, pretty normal looking bezels.",
+    "sentences": [
+      {
+        "text": "And then the display, it's okay.",
+        "start": 241.86,
+        "end": 243.78
+      },
+      {
+        "text": "It's not amazing.",
+        "start": 243.86,
+        "end": 244.6
+      },
+      {
+        "text": "It's 13 inches corner to corner, pretty normal looking bezels.",
+        "start": 244.7,
+        "end": 247.64
+      }
+    ]
+  },
+  {
+    "index": 40,
+    "filename": "chunk_040.mp4",
+    "start": 247.52,
+    "end": 256.32,
+    "duration": 8.8,
+    "text": "The rooms we're in are not very bright, but this maxes out at 500 nits, and it's a little higher than 1440p resolution at 60 Hertz.",
+    "sentences": [
+      {
+        "text": "The rooms we're in are not very bright, but this maxes out at 500 nits, and it's a little higher than 1440p resolution at 60 Hertz.",
+        "start": 247.82,
+        "end": 256.32
+      }
+    ]
+  },
+  {
+    "index": 41,
+    "filename": "chunk_041.mp4",
+    "start": 256.02,
+    "end": 262.36,
+    "duration": 6.34,
+    "text": "And I also actually found myself thinking maybe it would be a little bit lighter since it's on the small side, but it's still all metal.",
+    "sentences": [
+      {
+        "text": "And I also actually found myself thinking maybe it would be a little bit lighter since it's on the small side, but it's still all metal.",
+        "start": 256.32,
+        "end": 262.36
+      }
+    ]
+  },
+  {
+    "index": 42,
+    "filename": "chunk_042.mp4",
+    "start": 262.64,
+    "end": 268.52,
+    "duration": 5.88,
+    "text": "And spec for spec, it looks like it's the same weight as a slightly bigger MacBook Air, 2.7 pounds.",
+    "sentences": [
+      {
+        "text": "And spec for spec, it looks like it's the same weight as a slightly bigger MacBook Air, 2.7 pounds.",
+        "start": 262.94,
+        "end": 268.52
+      }
+    ]
+  },
+  {
+    "index": 43,
+    "filename": "chunk_043.mp4",
+    "start": 268.32,
+    "end": 275.7,
+    "duration": 7.38,
+    "text": "You know who this will really kill for? Students, education, and not just college students.",
+    "sentences": [
+      {
+        "text": "You know who this will really kill for?",
+        "start": 268.62,
+        "end": 271.26
+      },
+      {
+        "text": "Students, education, and not just college students.",
+        "start": 272.34,
+        "end": 275.7
+      }
+    ]
+  },
+  {
+    "index": 44,
+    "filename": "chunk_044.mp4",
+    "start": 275.5,
+    "end": 280.72,
+    "duration": 5.22,
+    "text": "I think high school and even younger, especially where Chromebooks have been killing it for years.",
+    "sentences": [
+      {
+        "text": "I think high school and even younger, especially where Chromebooks have been killing it for years.",
+        "start": 275.8,
+        "end": 280.72
+      }
+    ]
+  },
+  {
+    "index": 45,
+    "filename": "chunk_045.mp4",
+    "start": 280.66,
+    "end": 286.34,
+    "duration": 5.68,
+    "text": "Chromebooks have been cheaper and have been just dominating in education. And I think Apple wanted a piece of that pie.",
+    "sentences": [
+      {
+        "text": "Chromebooks have been cheaper and have been just dominating in education.",
+        "start": 280.96,
+        "end": 284.3
+      },
+      {
+        "text": "And I think Apple wanted a piece of that pie.",
+        "start": 284.3,
+        "end": 286.34
+      }
+    ]
+  },
+  {
+    "index": 46,
+    "filename": "chunk_046.mp4",
+    "start": 286.58,
+    "end": 292.34,
+    "duration": 5.76,
+    "text": "Now, this isn't Chromebook cheap, but it is a lot closer than the $1,100 MacBook Air is.",
+    "sentences": [
+      {
+        "text": "Now, this isn't Chromebook cheap, but it is a lot closer than the $1,100 MacBook Air is.",
+        "start": 286.88,
+        "end": 292.34
+      }
+    ]
+  },
+  {
+    "index": 47,
+    "filename": "chunk_047.mp4",
+    "start": 292.34,
+    "end": 297.52,
+    "duration": 5.18,
+    "text": "And with the student discount, if you look on their site, this is also now a $499 laptop.",
+    "sentences": [
+      {
+        "text": "And with the student discount, if you look on their site, this is also now a $499 laptop.",
+        "start": 292.64,
+        "end": 297.52
+      }
+    ]
+  },
+  {
+    "index": 48,
+    "filename": "chunk_048.mp4",
+    "start": 297.4,
+    "end": 303.4,
+    "duration": 6.0,
+    "text": "So it's a little more appealing. And it just plays into the classic Apple thing. Like, oh, we offer something in the same category.",
+    "sentences": [
+      {
+        "text": "So it's a little more appealing.",
+        "start": 297.7,
+        "end": 299.08
+      },
+      {
+        "text": "And it just plays into the classic Apple thing.",
+        "start": 299.2,
+        "end": 301.18
+      },
+      {
+        "text": "Like, oh, we offer something in the same category.",
+        "start": 301.26,
+        "end": 303.4
+      }
+    ]
+  },
+  {
+    "index": 49,
+    "filename": "chunk_049.mp4",
+    "start": 303.22,
+    "end": 308.16,
+    "duration": 4.94,
+    "text": "Would you rather get the Thin and Light laptop from Acer or the one from Apple?",
+    "sentences": [
+      {
+        "text": "Would you rather get the Thin and Light laptop from Acer or the one from Apple?",
+        "start": 303.52,
+        "end": 308.16
+      }
+    ]
+  },
+  {
+    "index": 50,
+    "filename": "chunk_050.mp4",
+    "start": 308.88,
+    "end": 320.5,
+    "duration": 11.62,
+    "text": "Well, the one from Apple works well with the iPhone you have. And you know, up until now, a lot of students I've seen were trying to undercut a MacBook Air with either going cheaper refurbished or with an iPad.",
+    "sentences": [
+      {
+        "text": "Well, the one from Apple works well with the iPhone you have.",
+        "start": 309.18,
+        "end": 311.94
+      },
+      {
+        "text": "And you know, up until now, a lot of students I've seen were trying to undercut a MacBook Air with either going cheaper refurbished or with an iPad.",
+        "start": 312,
+        "end": 320.5
+      }
+    ]
+  },
+  {
+    "index": 51,
+    "filename": "chunk_051.mp4",
+    "start": 321.3,
+    "end": 331.82,
+    "duration": 10.52,
+    "text": "Thing about the iPad is it's actually not that much cheaper now. If you go with the cheapest base iPad, that's $329, but then the keyboard accessory that they make for it costs $250 more.",
+    "sentences": [
+      {
+        "text": "Thing about the iPad is it's actually not that much cheaper now.",
+        "start": 321.6,
+        "end": 323.96
+      },
+      {
+        "text": "If you go with the cheapest base iPad, that's $329, but then the keyboard accessory that they make for it costs $250 more.",
+        "start": 323.96,
+        "end": 331.82
+      }
+    ]
+  },
+  {
+    "index": 52,
+    "filename": "chunk_052.mp4",
+    "start": 332.04,
+    "end": 336.24,
+    "duration": 4.2,
+    "text": "So before you even get a pencil, you're already at just about 600 bucks.",
+    "sentences": [
+      {
+        "text": "So before you even get a pencil, you're already at just about 600 bucks.",
+        "start": 332.34,
+        "end": 336.24
+      }
+    ]
+  },
+  {
+    "index": 53,
+    "filename": "chunk_053.mp4",
+    "start": 336.02,
+    "end": 339.44,
+    "duration": 3.42,
+    "text": "And that's only 128 gigs and an A16.",
+    "sentences": [
+      {
+        "text": "And that's only 128 gigs and an A16.",
+        "start": 336.32,
+        "end": 339.44
+      }
+    ]
+  },
+  {
+    "index": 54,
+    "filename": "chunk_054.mp4",
+    "start": 339.32,
+    "end": 344.52,
+    "duration": 5.2,
+    "text": "So now this looks like a much better value to actually get a Mac. Now, I have to bring this up.",
+    "sentences": [
+      {
+        "text": "So now this looks like a much better value to actually get a Mac.",
+        "start": 339.62,
+        "end": 342.98
+      },
+      {
+        "text": "Now, I have to bring this up.",
+        "start": 343.1,
+        "end": 344.52
+      }
+    ]
+  },
+  {
+    "index": 55,
+    "filename": "chunk_055.mp4",
+    "start": 344.42,
+    "end": 349.98,
+    "duration": 5.56,
+    "text": "Do you remember the original 12-inch MacBook? This, you know, some of you are younger.",
+    "sentences": [
+      {
+        "text": "Do you remember the original 12-inch MacBook?",
+        "start": 344.72,
+        "end": 348.14
+      },
+      {
+        "text": "This, you know, some of you are younger.",
+        "start": 348.96,
+        "end": 349.98
+      }
+    ]
+  },
+  {
+    "index": 56,
+    "filename": "chunk_056.mp4",
+    "start": 349.82,
+    "end": 356.32,
+    "duration": 6.5,
+    "text": "You might actually not remember this from about 10 years ago, but Apple tried to make, before Apple Silicon, a 12-inch MacBook.",
+    "sentences": [
+      {
+        "text": "You might actually not remember this from about 10 years ago, but Apple tried to make, before Apple Silicon, a 12-inch MacBook.",
+        "start": 350.12,
+        "end": 356.32
+      }
+    ]
+  },
+  {
+    "index": 57,
+    "filename": "chunk_057.mp4",
+    "start": 356.14,
+    "end": 361.78,
+    "duration": 5.64,
+    "text": "And that was supposed to be an even thinner and lighter and smaller laptop than the MacBook Air.",
+    "sentences": [
+      {
+        "text": "And that was supposed to be an even thinner and lighter and smaller laptop than the MacBook Air.",
+        "start": 356.44,
+        "end": 361.78
+      }
+    ]
+  },
+  {
+    "index": 58,
+    "filename": "chunk_058.mp4",
+    "start": 361.74,
+    "end": 366.82,
+    "duration": 5.08,
+    "text": "And it was, but it also wasn't a very good laptop at all.",
+    "sentences": [
+      {
+        "text": "And it was, but it also wasn't a very good laptop at all.",
+        "start": 362.04,
+        "end": 366.82
+      }
+    ]
+  },
+  {
+    "index": 59,
+    "filename": "chunk_059.mp4",
+    "start": 366.64,
+    "end": 375.58,
+    "duration": 8.94,
+    "text": "It was running a 1.1 gigahertz dual-core Intel processor that throttled if you looked at it for too long, and it costs $1,300 still.",
+    "sentences": [
+      {
+        "text": "It was running a 1.1 gigahertz dual-core Intel processor that throttled if you looked at it for too long, and it costs $1,300 still.",
+        "start": 366.94,
+        "end": 375.58
+      }
+    ]
+  },
+  {
+    "index": 60,
+    "filename": "chunk_060.mp4",
+    "start": 375.78,
+    "end": 387.2,
+    "duration": 11.42,
+    "text": "But it was a smaller, thinner machine, ultra-portable, a 12-inch display, eight gigs of RAM, 256 gigs of storage, and it was their first laptop with only USB Type-C ports.",
+    "sentences": [
+      {
+        "text": "But it was a smaller, thinner machine, ultra-portable, a 12-inch display, eight gigs of RAM, 256 gigs of storage, and it was their first laptop with only USB Type-C ports.",
+        "start": 376.08,
+        "end": 387.2
+      }
+    ]
+  },
+  {
+    "index": 61,
+    "filename": "chunk_061.mp4",
+    "start": 387.46,
+    "end": 392.98,
+    "duration": 5.52,
+    "text": "Sound familiar? This was basically their first attempt at making a netbook. So that has obviously since been retired.",
+    "sentences": [
+      {
+        "text": "Sound familiar?",
+        "start": 387.76,
+        "end": 388.22
+      },
+      {
+        "text": "This was basically their first attempt at making a netbook.",
+        "start": 388.34,
+        "end": 391.06
+      },
+      {
+        "text": "So that has obviously since been retired.",
+        "start": 391.14,
+        "end": 392.98
+      }
+    ]
+  },
+  {
+    "index": 62,
+    "filename": "chunk_062.mp4",
+    "start": 392.94,
+    "end": 406.14,
+    "duration": 13.2,
+    "text": "But my theory is that once they spun up Apple Silicon and their chips got much more efficient and much better integrated, they finally had the ability to make that machine, but actually good.",
+    "sentences": [
+      {
+        "text": "But my theory is that once they spun up Apple Silicon and their chips got much more efficient and much better integrated, they finally had the ability to make that machine, but actually good.",
+        "start": 393.24,
+        "end": 406.14
+      }
+    ]
+  },
+  {
+    "index": 63,
+    "filename": "chunk_063.mp4",
+    "start": 405.94,
+    "end": 415.9,
+    "duration": 9.96,
+    "text": "There was no way they were gonna do that well with Intel chips. And so now here we are in 2026, and this is basically that old 12-inch MacBook reincarnated.",
+    "sentences": [
+      {
+        "text": "There was no way they were gonna do that well with Intel chips.",
+        "start": 406.24,
+        "end": 408.46
+      },
+      {
+        "text": "And so now here we are in 2026, and this is basically that old 12-inch MacBook reincarnated.",
+        "start": 408.54,
+        "end": 415.9
+      }
+    ]
+  },
+  {
+    "index": 64,
+    "filename": "chunk_064.mp4",
+    "start": 415.74,
+    "end": 428.18,
+    "duration": 12.44,
+    "text": "Now, I also happen to think that the old Intel-powered trashcan Mac Pro had the same problem, and that the new Mac Studio is everything that they wanted that machine to be, which is why they're going to kill the Mac Pro.",
+    "sentences": [
+      {
+        "text": "Now, I also happen to think that the old Intel-powered trashcan Mac Pro had the same problem, and that the new Mac Studio is everything that they wanted that machine to be, which is why they're going to kill the Mac Pro.",
+        "start": 416.04,
+        "end": 428.18
+      }
+    ]
+  },
+  {
+    "index": 65,
+    "filename": "chunk_065.mp4",
+    "start": 429.0,
+    "end": 435.06,
+    "duration": 6.06,
+    "text": "But that's a story for another video. Now, there's a couple other announcements this week, of course, too, from Apple.",
+    "sentences": [
+      {
+        "text": "But that's a story for another video.",
+        "start": 429.3,
+        "end": 432.34
+      },
+      {
+        "text": "Now, there's a couple other announcements this week, of course, too, from Apple.",
+        "start": 432.42,
+        "end": 435.06
+      }
+    ]
+  },
+  {
+    "index": 66,
+    "filename": "chunk_066.mp4",
+    "start": 434.88,
+    "end": 439.8,
+    "duration": 4.92,
+    "text": "There's a new Studio Display and Studio Display XDR to replace the Pro Display.",
+    "sentences": [
+      {
+        "text": "There's a new Studio Display and Studio Display XDR to replace the Pro Display.",
+        "start": 435.18,
+        "end": 439.8
+      }
+    ]
+  },
+  {
+    "index": 67,
+    "filename": "chunk_067.mp4",
+    "start": 439.78,
+    "end": 454.42,
+    "duration": 14.64,
+    "text": "There's also an iPhone 17E with MagSafe and double the starting storage and a new pink color, and a spec bump M5 Pro and M5 Max MacBook Pro with slightly less text on the keyboard, and a spec bumped M4 iPad Air.",
+    "sentences": [
+      {
+        "text": "There's also an iPhone 17E with MagSafe and double the starting storage and a new pink color, and a spec bump M5 Pro and M5 Max MacBook Pro with slightly less text on the keyboard, and a spec bumped M4 iPad Air.",
+        "start": 440.08,
+        "end": 454.42
+      }
+    ]
+  },
+  {
+    "index": 68,
+    "filename": "chunk_068.mp4",
+    "start": 454.16,
+    "end": 462.16,
+    "duration": 8.0,
+    "text": "So let me know in the comments which of that stuff you're most interested in seeing a review of, and make sure you get subscribed to be among the first to see those reviews when they do come out.",
+    "sentences": [
+      {
+        "text": "So let me know in the comments which of that stuff you're most interested in seeing a review of, and make sure you get subscribed to be among the first to see those reviews when they do come out.",
+        "start": 454.46,
+        "end": 462.16
+      }
+    ]
+  },
+  {
+    "index": 69,
+    "filename": "chunk_069.mp4",
+    "start": 462.06,
+    "end": 470.12,
+    "duration": 8.06,
+    "text": "And shout out to Ridge for sponsoring this video. Ridge was started 13 years ago by Paul and Daniel Cain with one pretty simple goal, gear built better.",
+    "sentences": [
+      {
+        "text": "And shout out to Ridge for sponsoring this video.",
+        "start": 462.36,
+        "end": 464.18
+      },
+      {
+        "text": "Ridge was started 13 years ago by Paul and Daniel Cain with one pretty simple goal, gear built better.",
+        "start": 464.48,
+        "end": 470.12
+      }
+    ]
+  },
+  {
+    "index": 70,
+    "filename": "chunk_070.mp4",
+    "start": 469.88,
+    "end": 477.1,
+    "duration": 7.22,
+    "text": "And that mission lines up pretty perfectly with why I've been working and building with them and why I've been the chief creative partner for the past couple of years.",
+    "sentences": [
+      {
+        "text": "And that mission lines up pretty perfectly with why I've been working and building with them and why I've been the chief creative partner for the past couple of years.",
+        "start": 470.18,
+        "end": 477.1
+      }
+    ]
+  },
+  {
+    "index": 71,
+    "filename": "chunk_071.mp4",
+    "start": 476.88,
+    "end": 486.02,
+    "duration": 9.14,
+    "text": "So to celebrate, after selling over 5 million wallets and tech and travel gear and more, Ridge is offering up to 40% off almost everything on their website.",
+    "sentences": [
+      {
+        "text": "So to celebrate, after selling over 5 million wallets and tech and travel gear and more, Ridge is offering up to 40% off almost everything on their website.",
+        "start": 477.18,
+        "end": 486.02
+      }
+    ]
+  },
+  {
+    "index": 72,
+    "filename": "chunk_072.mp4",
+    "start": 485.72,
+    "end": 493.72,
+    "duration": 8.0,
+    "text": "So a few things I always suggest to everyone cause it's good stuff. The tracker card, which works with Apple Find My, and it has a really loud chime to help you find it when you're nearby.",
+    "sentences": [
+      {
+        "text": "So a few things I always suggest to everyone cause it's good stuff.",
+        "start": 486.02,
+        "end": 488.32
+      },
+      {
+        "text": "The tracker card, which works with Apple Find My, and it has a really loud chime to help you find it when you're nearby.",
+        "start": 488.8,
+        "end": 493.72
+      }
+    ]
+  },
+  {
+    "index": 73,
+    "filename": "chunk_073.mp4",
+    "start": 493.94,
+    "end": 502.02,
+    "duration": 8.08,
+    "text": "Check it out. There's also the extremely popular 501 power bank, which I basically always have on me.",
+    "sentences": [
+      {
+        "text": "Check it out.",
+        "start": 494.24,
+        "end": 494.8
+      },
+      {
+        "text": "There's also the extremely popular 501 power bank, which I basically always have on me.",
+        "start": 497.58,
+        "end": 502.02
+      }
+    ]
+  },
+  {
+    "index": 74,
+    "filename": "chunk_074.mp4",
+    "start": 501.72,
+    "end": 505.24,
+    "duration": 3.52,
+    "text": "And it's MagSafe compatible too. So it just pops on the back of your phone, easy.",
+    "sentences": [
+      {
+        "text": "And it's MagSafe compatible too.",
+        "start": 502.02,
+        "end": 503.5
+      },
+      {
+        "text": "So it just pops on the back of your phone, easy.",
+        "start": 503.5,
+        "end": 505.24
+      }
+    ]
+  },
+  {
+    "index": 75,
+    "filename": "chunk_075.mp4",
+    "start": 505.02,
+    "end": 509.64,
+    "duration": 4.62,
+    "text": "And of course the redesigned Ridge Wallet 2.0, which is now available in two new colors.",
+    "sentences": [
+      {
+        "text": "And of course the redesigned Ridge Wallet 2.0, which is now available in two new colors.",
+        "start": 505.32,
+        "end": 509.64
+      }
+    ]
+  },
+  {
+    "index": 76,
+    "filename": "chunk_076.mp4",
+    "start": 509.64,
+    "end": 515.2,
+    "duration": 5.56,
+    "text": "These are Iridescent and Forge Fetty. So don't wait or you miss out on up to 40% off.",
+    "sentences": [
+      {
+        "text": "These are Iridescent and Forge Fetty.",
+        "start": 509.94,
+        "end": 512.9
+      },
+      {
+        "text": "So don't wait or you miss out on up to 40% off.",
+        "start": 513.04,
+        "end": 515.2
+      }
+    ]
+  },
+  {
+    "index": 77,
+    "filename": "chunk_077.mp4",
+    "start": 514.9,
+    "end": 522.44,
+    "duration": 7.54,
+    "text": "Check it out at the link below, ridge.com slash MKBHD. Thanks for watching and I'll catch you guys in the next one. Peace.",
+    "sentences": [
+      {
+        "text": "Check it out at the link below, ridge.com slash MKBHD.",
+        "start": 515.2,
+        "end": 518.08
+      },
+      {
+        "text": "Thanks for watching and I'll catch you guys in the next one.",
+        "start": 519.02,
+        "end": 521.76
+      },
+      {
+        "text": "Peace.",
+        "start": 522.24,
+        "end": 522.44
+      }
+    ]
+  }
+]
